@@ -1,12 +1,11 @@
 /* LMS MVP  |  assets/css/style.css
-   Theme: Clean Academic — navy + amber accent, crisp white panels */
 
 /* ── Google Font ─ */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
 
 /* ── CSS Variables ── */
 :root {
-  --navy:    #1a2744;
+  --navy:    #0739a5;
   --navy2:   #243258;
   --amber:   #f59e0b;
   --amber2:  #fbbf24;
@@ -19,7 +18,7 @@
   --gray400: #94a3b8;
   --gray600: #475569;
   --gray800: #1e293b;
-  --shadow:  0 2px 12px rgba(26,39,68,.10);
+  --shadow:  0 2px 12px rgba(20, 87, 230, 0.997);
   --radius:  10px;
   --font:    'DM Sans', sans-serif;
   --font-h:  'Playfair Display', serif;
@@ -55,7 +54,7 @@ ul { list-style: none; }
   padding: 44px 40px;
   width: 100%;
   max-width: 420px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  box-shadow: 0 20px 60px rgb(2, 44, 251);
 }
 .auth-logo {
   text-align: center;
@@ -158,7 +157,7 @@ ul { list-style: none; }
 }
 .sidebar-brand {
   padding: 22px 20px 18px;
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(7, 77, 255, 0.977);
 }
 .sidebar-brand span {
   font-family: var(--font-h);
@@ -192,7 +191,7 @@ ul { list-style: none; }
 .sidebar-nav a:hover,
 .sidebar-nav a.active {
   color: var(--white);
-  background: rgba(255,255,255,.07);
+  background: rgb(1, 111, 244);
   border-left-color: var(--amber);
 }
 .sidebar-nav .nav-section {
@@ -200,13 +199,13 @@ ul { list-style: none; }
   font-size: .68rem;
   text-transform: uppercase;
   letter-spacing: .1em;
-  color: rgba(255,255,255,.35);
+  color: rgb(255, 255, 255);
 }
 .sidebar-footer {
   padding: 16px 20px;
-  border-top: 1px solid rgba(255,255,255,.08);
+  border-top: 1px solid rgba(8, 135, 246, 0.864);
   font-size: .82rem;
-  color: rgba(255,255,255,.5);
+  color: rgba(0, 106, 181, 0.977);
 }
 .sidebar-footer strong { display: block; color: var(--white); }
 

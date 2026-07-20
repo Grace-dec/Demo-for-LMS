@@ -23,7 +23,7 @@ foreach ($SAFE_REDIRECTS as $prefix) {
     }
 }
 
-// ── Handle form submission ─
+// ── Handle form submission ──────────────────────────────────
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email    = trim($_POST['email']    ?? '');
     $password =      $_POST['password'] ?? '';
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!$user['is_active']) {
                 $error = 'Your account has been disabled. Please contact the administrator.';
             } else {
-                // ── Successful login ───
+                // ── Successful login ────────────────────────
                 session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['name']    = $user['name'];
@@ -93,20 +93,20 @@ $stat_students = $pdo->query("SELECT COUNT(*) FROM users WHERE role='student'")-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In — LearnHub LMS</title>
+  <title>Sign In — lightlearn LMS</title>
   <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
   <style>
-    /* ── Page layout ─*/
+    /* ── Page layout ────────────────────────────────────── */
     .login-page {
       min-height: 100vh;
       display: flex;
     }
 
-    /* ── Left decorative panel ─ */
+    /* ── Left decorative panel ──────────────────────────── */
     .login-left {
       display: none;
       flex: 1;
-      background: linear-gradient(145deg, #1a2744 0%, #243258 50%, #1e3a6e 100%);
+      background: linear-gradient(145deg, #386fe5 0%, #3961d2 50%, #3670da 100%);
       position: relative;
       overflow: hidden;
       align-items: center;
@@ -173,7 +173,7 @@ $stat_students = $pdo->query("SELECT COUNT(*) FROM users WHERE role='student'")-
     .login-role-badge.instructor { border-color: #60a5fa; color: #93c5fd; }
     .login-role-badge.student    { border-color: #34d399; color: #6ee7b7; }
 
-    /* ── Right form panel ─ */
+    /* ── Right form panel ───────────────────────────────── */
     .login-right {
       flex: 0 0 100%;
       display: flex; align-items: center; justify-content: center;
@@ -234,29 +234,23 @@ $stat_students = $pdo->query("SELECT COUNT(*) FROM users WHERE role='student'")-
     }
     .pw-toggle:hover { color: #1a2744; }
 
-    /* Demo hint box */
-    .demo-hint {
-      margin-top: 26px; padding: 14px 16px;
-      background: #fef9c3; border-radius: 10px;
-      border: 1px solid #fde68a; font-size: .77rem;
-      color: #92400e; line-height: 1.65;
-    }
-    .demo-hint strong { display: block; margin-bottom: 4px; }
+
   </style>
 </head>
 <body>
 <div class="login-page">
 
-  <!-- LEFT  —  decorative brand panel -->
+  <!-- ════════════════════════════════════════════════════
+       LEFT  —  decorative brand panel
+  ════════════════════════════════════════════════════ -->
   <div class="login-left">
     <div class="login-left-logo"></div>
-    <div class="login-left-title">Welcome Back<br>to LearnHub</div>
-    <p class="login-left-sub">
-    <!-- Role indicators -->
-    <div class="login-roles">
-    </div>
+    <div class="login-left-title">Welcome Back<br>to lightlearn</div>
 
-  <!-- RIGHT  —  login form -->
+
+  <!-- ════════════════════════════════════════════════════
+       RIGHT  —  login form
+  ════════════════════════════════════════════════════ -->
   <div class="login-right">
     <div class="login-box">
 
@@ -266,13 +260,6 @@ $stat_students = $pdo->query("SELECT COUNT(*) FROM users WHERE role='student'")-
         <h1>Sign In</h1>
       </div>
 
-      <!-- Destination info notice -->
-      <div class="">
-        <span></span>
-        <div>
-          <strong style="display:block;margin-bottom:2px"></strong>
-        </div>
-      </div>
 
       <!-- Error / info alerts -->
       <?php if ($error): ?>
@@ -282,7 +269,7 @@ $stat_students = $pdo->query("SELECT COUNT(*) FROM users WHERE role='student'")-
         <div class="alert alert-info"><?= e($info) ?></div>
       <?php endif; ?>
 
-      <!-- ── Login form ── -->
+      <!-- ── Login form ──────────────────────────────── -->
       <form method="post" action="login.php">
         <!--
           Only pass redirect if it's a real internal protected page.
@@ -313,9 +300,19 @@ $stat_students = $pdo->query("SELECT COUNT(*) FROM users WHERE role='student'")-
           Sign In →
         </button>
       </form>
+
+      <div class="login-divider">or</div>
+
+      <a href="home.php" class="btn btn-outline btn-block"
+         style="justify-content:center;padding:11px;border-radius:10px">
+        Browse Courses Without an Account
+      </a>
+
       <div class="login-register-row">
         No account yet? &nbsp;<a href="register.php">Register for free</a>
       </div>
+
+    </div>
   </div>
 
 </div><!-- .login-page -->

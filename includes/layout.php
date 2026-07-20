@@ -11,7 +11,7 @@ function layout_head(string $title): void {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>' . htmlspecialchars($title, ENT_QUOTES) . ' — LearnHub LMS</title>
+  <title>' . htmlspecialchars($title, ENT_QUOTES) . ' — lightlearn LMS</title>
   <link rel="stylesheet" href="' . $BASE_URL_LAYOUT . 'assets/css/style.css">
 </head>
 <body>
@@ -29,7 +29,7 @@ function layout_sidebar(array $navItems, string $role, string $name): void {
     $badge = ['admin'=>'Admin','instructor'=>'Instructor','student'=>'Student'][$role] ?? $role;
     echo '<aside class="sidebar">
   <div class="sidebar-brand">
-    <span>LearnHub</span>
+    <span>lightlearn</span>
     <small>' . htmlspecialchars($badge) . ' Portal</small>
   </div>
   <nav class="sidebar-nav">';

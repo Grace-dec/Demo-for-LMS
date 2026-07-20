@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-/** Redirect to login page (not index) with a message */
+/** Redirect to login page if not logged in */
 function require_login(): void {
     if (empty($_SESSION['user_id'])) {
         header('Location: ' . BASE_URL . 'login.php?msg=login_required');
@@ -13,7 +13,7 @@ function require_login(): void {
     }
 }
 
-/** Restrict page to specific role(s) */
+/** Restrict a page to specific role(s) only */
 function require_role(string ...$roles): void {
     require_login();
     if (!in_array($_SESSION['role'], $roles, true)) {
@@ -22,12 +22,27 @@ function require_role(string ...$roles): void {
     }
 }
 
-function is_logged_in(): bool   { return !empty($_SESSION['user_id']); }
-function current_user_id(): int  { return (int)($_SESSION['user_id'] ?? 0); }
-function current_role(): string  { return $_SESSION['role'] ?? ''; }
-function current_name(): string  { return $_SESSION['name'] ?? ''; }
+/** Check if anyone is currently logged in */
+function is_logged_in(): bool {
+    return !empty($_SESSION['user_id']);
+}
 
-/** After login, redirect to the correct role dashboard */
+/** Get the logged-in user's ID */
+function current_user_id(): int {
+    return (int)($_SESSION['user_id'] ?? 0);
+}
+
+/** Get the logged-in user's role */
+function current_role(): string {
+    return $_SESSION['role'] ?? '';
+}
+
+/** Get the logged-in user's name */
+function current_name(): string {
+    return $_SESSION['name'] ?? '';
+}
+
+/** After login, send user to their correct dashboard based on role */
 function role_dashboard(string $role): string {
     return match ($role) {
         'admin'      => BASE_URL . 'admin/dashboard.php',
