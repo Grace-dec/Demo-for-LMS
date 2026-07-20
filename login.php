@@ -244,9 +244,12 @@ $stat_students = $pdo->query("SELECT COUNT(*) FROM users WHERE role='student'")-
        LEFT  —  decorative brand panel
   ════════════════════════════════════════════════════ -->
   <div class="login-left">
-    <div class="login-left-logo"></div>
-    <div class="login-left-title">Welcome Back<br>to lightlearn</div>
-
+    <div class="login-left-logo">
+  <img src="assets\image\logo2.png.PNG" 
+       alt="LightLearn Logo" 
+       style="height:70px; width:auto; object-fit:contain; filter:brightness(0) invert(1);">
+</div>
+<div class="login-left-title">Welcome Back to<br>LightLearn</div>
 
   <!-- ════════════════════════════════════════════════════
        RIGHT  —  login form

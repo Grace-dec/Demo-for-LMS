@@ -41,7 +41,7 @@ function handle_upload(string $field, string $dest = 'uploads'): string {
     if (!is_dir($destDir)) mkdir($destDir, 0755, true);
 
     $ext      = strtolower(pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION));
-    $allowed  = ['pdf','doc','docx','txt','png','jpg','jpeg','zip','pptx','xlsx'];
+    $allowed  = ['pdf','doc','docx','txt','png','jpg','jpeg','webp','gif','zip','pptx','xlsx'];
     if (!in_array($ext, $allowed, true)) return '';
 
     $filename = uniqid('file_', true) . '.' . $ext;

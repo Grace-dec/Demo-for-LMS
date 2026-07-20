@@ -1,8 +1,29 @@
-/* LMS MVP  |  assets/js/main.js */
+/* ============================================================
+   LMS MVP  |  assets/js/main.js
+   ============================================================ */
+
+/* ── Profile dropdown toggle (global) ──────────────────────── */
+function toggleProfileMenu() {
+  const wrapper  = document.getElementById('topbar-profile');
+  const dropdown = document.getElementById('profile-dropdown');
+  if (!wrapper || !dropdown) return;
+  const isOpen = dropdown.classList.contains('open');
+  dropdown.classList.toggle('open', !isOpen);
+  wrapper.classList.toggle('open', !isOpen);
+}
+
+// Close dropdown when clicking anywhere outside
+document.addEventListener('click', (e) => {
+  const wrapper = document.getElementById('topbar-profile');
+  if (wrapper && !wrapper.contains(e.target)) {
+    document.getElementById('profile-dropdown')?.classList.remove('open');
+    wrapper.classList.remove('open');
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ── Mobile sidebar toggle ─ */
+  /* ── Mobile sidebar toggle ─────────────────────────────── */
   const sidebar    = document.querySelector('.sidebar');
   const toggleBtn  = document.getElementById('sidebar-toggle');
   const overlay    = document.getElementById('sidebar-overlay');
@@ -10,17 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toggleBtn && sidebar) {
     toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('open');
-      if (overlay) overlay.classList.toggle('visible');
+      if (overlay) overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
     });
   }
   if (overlay) {
     overlay.addEventListener('click', () => {
       sidebar.classList.remove('open');
-      overlay.classList.remove('visible');
+      overlay.style.display = 'none';
     });
   }
 
-  /* ── Active nav link ─ */
+  /* ── Active nav link ───────────────────────────────────── */
   const currentPath = window.location.pathname;
   document.querySelectorAll('.sidebar-nav a').forEach(link => {
     if (link.getAttribute('href') && currentPath.includes(link.getAttribute('href'))) {
@@ -28,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ── Confirm dialogs ─*/
+  /* ── Confirm dialogs ───────────────────────────────────── */
   document.querySelectorAll('[data-confirm]').forEach(el => {
     el.addEventListener('click', e => {
       const msg = el.dataset.confirm || 'Are you sure?';
@@ -36,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Auto-dismiss alerts ─ */
+  /* ── Auto-dismiss alerts ────────────────────────────────── */
   const alerts = document.querySelectorAll('.alert');
   alerts.forEach(a => {
     setTimeout(() => {
@@ -46,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4500);
   });
 
-  /* ── File upload label update ─*/
+  /* ── File upload label update ───────────────────────────── */
   document.querySelectorAll('input[type="file"]').forEach(input => {
     input.addEventListener('change', () => {
       const label = document.querySelector(`label[for="${input.id}"] .file-name`);
@@ -54,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Grade score live percentage ─ */
+  /* ── Grade score live percentage ────────────────────────── */
   const scoreInput = document.getElementById('score');
   const pointsMax  = document.getElementById('points_max');
   const pctDisplay = document.getElementById('score_pct');

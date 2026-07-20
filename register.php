@@ -57,9 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="auth-page">
   <div class="auth-card">
     <div class="auth-logo">
-      <span>lightlearn</span>
-      <small>Create your account</small>
-    </div>
+  <img src="<?= BASE_URL ?>assets\image\logo2.png.PNG" 
+       alt="LightLearn Logo" 
+       style="height:60px; width:auto; object-fit:contain; margin-bottom:8px;">
+  <small>Create your account</small>
+</div>
 
     <h2>New Account</h2>
 

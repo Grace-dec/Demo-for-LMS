@@ -39,11 +39,12 @@ $stat_instructors = $pdo->query("SELECT COUNT(*) FROM users  WHERE role='instruc
 <header class="hd-navbar">
   <div class="hd-navbar-inner">
 
-    <!-- Brand -->
-    <a href="home.php" class="hd-brand">
-      <span class="hd-brand-logo"></span> <!-- logo here -->
-      <span class="hd-brand-name">Lightlearn</span>
-    </a>
+   <!-- Brand -->
+<a href="home.php" class="hd-brand">
+  <img src="assets\image\logo2.png.PNG" 
+       alt="LightLearn Logo" 
+       style="height:40px; width:auto; object-fit:contain;">Lightlearn
+</a>
 
     <!-- Center nav links -->
     <nav class="hd-nav-links">
